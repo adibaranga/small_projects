@@ -1,0 +1,1 @@
+Just run compileAndRunCheckOutApp on windows or on linux.No external library required, just assertions needs to be enabled.
