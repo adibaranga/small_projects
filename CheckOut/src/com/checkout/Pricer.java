@@ -4,7 +4,7 @@ package com.checkout;
  * Created with IntelliJ IDEA.
  * User: Adi Baranga
  * Date: 2/1/14
- * Time: 2:10 PM
+ * Time: 7:10 PM
  */
 public interface Pricer {
 
@@ -16,4 +16,11 @@ public interface Pricer {
      * @return price of a number of items of the same type
      */
     public int getPrice(String item, int size);
+
+    /**
+     * Check if this item belongs to the store
+     * @param item
+     * @return  true if item belong to the store, false otherwise
+     */
+    public boolean isValidItem(String item);
 }

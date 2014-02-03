@@ -1,14 +1,13 @@
 package com.checkout;
 
 import java.util.Map;
-import java.util.TreeMap;
+import java.util.NavigableMap;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Adi Baranga
  * Date: 2/1/14
- * Time: 2:12 PM
- *
+ * Time: 7:12 PM
  */
 public interface PriceRules {
 
@@ -17,5 +16,5 @@ public interface PriceRules {
      *
      * @return map
      */
-    public Map<String, TreeMap<Integer, Integer>> getItemPricesMap();
+    public Map<String, NavigableMap<Integer, Integer>> getItemPricesMap();
 }

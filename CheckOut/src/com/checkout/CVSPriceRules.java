@@ -3,13 +3,14 @@ package com.checkout;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NavigableMap;
 import java.util.TreeMap;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Adi Baranga
  * Date: 2/1/14
- * Time: 2:36 PM
+ * Time: 7:36 PM
  * <p/>
  * Singleton class for loading the price rules
  */
@@ -17,7 +18,7 @@ public class CVSPriceRules implements PriceRules {
     private static CVSPriceRules instance = new CVSPriceRules();
 
     private static final String CSV_SEPARATOR = ",";
-    private Map<String, TreeMap<Integer, Integer>> itemPricesMap = new HashMap<String, TreeMap<Integer, Integer>>();
+    private Map<String, NavigableMap<Integer, Integer>> itemPricesMap = new HashMap<String, NavigableMap<Integer, Integer>>();
 
     private CVSPriceRules() {
         loadRules();
@@ -28,7 +29,7 @@ public class CVSPriceRules implements PriceRules {
     }
 
     @Override
-    public Map<String, TreeMap<Integer, Integer>> getItemPricesMap() {
+    public Map<String, NavigableMap<Integer, Integer>> getItemPricesMap() {
         return itemPricesMap;
     }
 
@@ -48,7 +49,7 @@ public class CVSPriceRules implements PriceRules {
                     String item = array[0];
                     Integer unit = Integer.parseInt(array[1]);
                     Integer price = Integer.parseInt(array[2]);
-                    TreeMap<Integer, Integer> unitPricesMap = itemPricesMap.get(item);
+                    NavigableMap<Integer, Integer> unitPricesMap = itemPricesMap.get(item);
                     if (unitPricesMap == null) {
                         unitPricesMap = new TreeMap<Integer, Integer>();
                         itemPricesMap.put(item, unitPricesMap);

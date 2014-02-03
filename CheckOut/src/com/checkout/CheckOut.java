@@ -7,7 +7,7 @@ import java.util.Map;
  * Created with IntelliJ IDEA.
  * User: Adi Baranga
  * Date: 2/1/14
- * Time: 2:04 PM
+ * Time: 7:04 PM
  * <p/>
  * Class for adding items and return the total price for them.
  * Decoupling the price computation
@@ -25,18 +25,20 @@ public class CheckOut {
      * Add an item
      *
      * @param item
+     * @throws IllegalArgumentException if the argument is an invalid item
      */
     public void scan(String item) {
-        if (item != null && item.length() > 0) {
-            if (items == null) {
-                items = new HashMap<String, Integer>();
-            }
-            Integer count = items.get(item);
-            if (count == null) {
-                items.put(item, 1);
-            } else {
-                items.put(item, ++count);
-            }
+        if (item == null || !pricer.isValidItem(item)) {
+            throw new IllegalArgumentException();
+        }
+        if (items == null) {
+            items = new HashMap<String, Integer>();
+        }
+        Integer count = items.get(item);
+        if (count == null) {
+            items.put(item, 1);
+        } else {
+            items.put(item, ++count);
         }
     }
 
@@ -45,6 +47,7 @@ public class CheckOut {
      *
      * @return total price
      */
+
     public int getTotalPrice() {
         int total = 0;
         if (items != null) {

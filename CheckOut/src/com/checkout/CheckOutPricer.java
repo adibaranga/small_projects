@@ -1,13 +1,13 @@
 package com.checkout;
 
 import java.util.Map;
-import java.util.TreeMap;
+import java.util.NavigableMap;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Adi Baranga
  * Date: 2/1/14
- * Time: 2:16 PM
+ * Time: 7:16 PM
  * <p/>
  * Calculates price for a number of items of the same type
  */
@@ -39,8 +39,13 @@ public class CheckOutPricer implements Pricer {
         return total;
     }
 
+    @Override
+    public boolean isValidItem(String item) {
+        return priceRules.getItemPricesMap().containsKey(item);
+    }
+
     private Map.Entry<Integer, Integer> getBestOffer(String item, int size) {
-        TreeMap<Integer, Integer> unitPricesMap = priceRules.getItemPricesMap().get(item);
+        NavigableMap<Integer, Integer> unitPricesMap = priceRules.getItemPricesMap().get(item);
         if (unitPricesMap != null) {
             return unitPricesMap.floorEntry(size);
         } else {

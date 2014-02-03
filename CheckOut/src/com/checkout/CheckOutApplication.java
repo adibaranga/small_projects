@@ -4,7 +4,7 @@ package com.checkout;
  * Created with IntelliJ IDEA.
  * User: Adi Baranga
  * Date: 2/1/14
- * Time: 2:57 PM
+ * Time: 7:57 PM
  * <p/>
  * Test class
  */
